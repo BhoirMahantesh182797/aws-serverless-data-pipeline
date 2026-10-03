@@ -7,8 +7,10 @@ services:
     ports:
       - "4566:4566"
     environment:
-      - SERVICES=s3
+      - SERVICES=s3,lambda
       - DEFAULT_REGION=us-east-1
       - DEBUG=1
+      - LAMBDA_EXECUTOR=docker
     volumes:
       - "./.localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
